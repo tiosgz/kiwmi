@@ -43,6 +43,14 @@ Spawn a new process.
 
 Stops an interactive move or resize.
 
+#### kiwmi:verbose(level)
+
+Sets verbosity to specified level (numeric value of one of `wlr_log_importance`, silent = 0 to debug = 3).
+
+#### kiwmi:verbosity()
+
+Returns the numerical verbosity level of kiwmi (one of `wlr_log_importance`, 0 to 3).
+
 #### kiwmi:view_at(x, y)
 
 Get the view at a specified position.

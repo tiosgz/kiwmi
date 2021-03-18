@@ -176,6 +176,36 @@ l_kiwmi_server_stop_interactive(lua_State *L)
 }
 
 static int
+l_kiwmi_server_verbose(lua_State *L)
+{
+    luaL_checkudata(L, 1, "kiwmi_server");
+    luaL_checktype(L, 2, LUA_TNUMBER);
+
+    int verbosity = lua_tointeger(L, 2);
+
+    if (verbosity >= WLR_SILENT && verbosity < WLR_LOG_IMPORTANCE_LAST) {
+        wlr_log_init((enum wlr_log_importance)verbosity, NULL);
+    } else {
+        wlr_log(WLR_ERROR,
+            "Attempting to set invalid verbosity: %i", verbosity);
+    }
+
+    return 0;
+}
+
+static int
+l_kiwmi_server_verbosity(lua_State *L)
+{
+    luaL_checkudata(L, 1, "kiwmi_server");
+
+    int verbosity = (int)wlr_log_get_verbosity();
+
+    lua_pushinteger(L, verbosity);
+
+    return 1;
+}
+
+static int
 l_kiwmi_server_view_at(lua_State *L)
 {
     struct kiwmi_object *obj =
@@ -218,6 +248,8 @@ static const luaL_Reg kiwmi_server_methods[] = {
     {"schedule", l_kiwmi_server_schedule},
     {"spawn", l_kiwmi_server_spawn},
     {"stop_interactive", l_kiwmi_server_stop_interactive},
+    {"verbose", l_kiwmi_server_verbose},
+    {"verbosity", l_kiwmi_server_verbosity},
     {"view_at", l_kiwmi_server_view_at},
     {NULL, NULL},
 };
