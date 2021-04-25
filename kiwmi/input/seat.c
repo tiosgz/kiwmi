@@ -142,6 +142,11 @@ seat_create(struct kiwmi_input *input)
     wl_signal_add(
         &seat->seat->events.request_set_cursor, &seat->request_set_cursor);
 
+    wl_signal_add(&seat->seat->events.request_set_primary_selection,
+        &seat->request_set_primary_selection);
+    seat->request_set_primary_selection.notify =
+        request_set_primary_selection_notify;
+
     return seat;
 }
 
