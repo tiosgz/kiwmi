@@ -186,8 +186,8 @@ l_kiwmi_server_verbose(lua_State *L)
     if (verbosity >= WLR_SILENT && verbosity < WLR_LOG_IMPORTANCE_LAST) {
         wlr_log_init((enum wlr_log_importance)verbosity, NULL);
     } else {
-        wlr_log(WLR_ERROR,
-            "Attempting to set invalid verbosity: %i", verbosity);
+        wlr_log(
+            WLR_ERROR, "Attempting to set invalid verbosity: %i", verbosity);
     }
 
     return 0;
