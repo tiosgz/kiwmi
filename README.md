@@ -6,6 +6,8 @@
   <a href="https://github.com/buffet/kiwmi/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/buffet/kiwmi"></a>
 </p>
 
+This branch contains changes that I will eventually PR to `buffet/kiwmi` (I will have to recommit them with nicer branch history and commit messages before that) once the current PRs are all merged or closed. Until then I do not want to be held off by the speed of the main repository.
+
 kiwmi is a work-in-progress extensive user-configurable Wayland Compositor.
 kiwmi specifically does not enforce any logic, allowing for the creation of Lua-scripted behaviors, making arduous tasks such as modal window management become a breeze.
 New users should be aware of the  steep learning curve present, however this will be reduced as the project matures.
