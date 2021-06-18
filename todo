@@ -1,0 +1,11 @@
+stack management
+layer shell surface management (+ misc fixes)
+damage tracking
+keyboard shortcuts inhibit
+global hotkeys
+pango/cairo integration with lua & rendering
+fullscreen (managed by lua -- zaphod vs normal fullscreen etc)
+input method
+drag & drop
+simple effects (blur, shadow...)
+kiwmi-lib (make lua just the *default* bindings, not the *only possible*)
