@@ -301,6 +301,8 @@ arrange_layers(struct kiwmi_output *output)
         }
     }
 
+    output->usable_area = usable_area;
+
     struct kiwmi_desktop *desktop = output->desktop;
     struct kiwmi_server *server   = wl_container_of(desktop, server, desktop);
     struct kiwmi_seat *seat       = server->input.seat;

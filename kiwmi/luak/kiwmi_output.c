@@ -116,6 +116,37 @@ l_kiwmi_output_size(lua_State *L)
     return 2;
 }
 
+static int
+l_kiwmi_output_usable_area(lua_State *L)
+{
+    struct kiwmi_object *obj =
+        *(struct kiwmi_object **)luaL_checkudata(L, 1, "kiwmi_output");
+
+    if (!obj->valid) {
+        return luaL_error(L, "kiwmi_output no longer valid");
+    }
+
+    struct kiwmi_output *output = obj->object;
+
+    struct wlr_box usable_area = output->usable_area;
+
+    lua_newtable(L);
+
+    lua_pushinteger(L, usable_area.x);
+    lua_setfield(L, -2, "x");
+
+    lua_pushinteger(L, usable_area.y);
+    lua_setfield(L, -2, "y");
+
+    lua_pushinteger(L, usable_area.width);
+    lua_setfield(L, -2, "width");
+
+    lua_pushinteger(L, usable_area.height);
+    lua_setfield(L, -2, "height");
+
+    return 1;
+}
+
 static const luaL_Reg kiwmi_output_methods[] = {
     {"auto", l_kiwmi_output_auto},
     {"move", l_kiwmi_output_move},
@@ -123,6 +154,7 @@ static const luaL_Reg kiwmi_output_methods[] = {
     {"on", luaK_callback_register_dispatch},
     {"pos", l_kiwmi_output_pos},
     {"size", l_kiwmi_output_size},
+    {"usable_area", l_kiwmi_output_usable_area},
     {NULL, NULL},
 };
 
