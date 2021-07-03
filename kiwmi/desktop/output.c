@@ -280,6 +280,7 @@ new_output_notify(struct wl_listener *listener, void *data)
 
     wl_signal_init(&output->events.destroy);
     wl_signal_init(&output->events.resize);
+    wl_signal_init(&output->events.usable_area_change);
 
     wl_signal_emit(&desktop->events.new_output, output);
 }

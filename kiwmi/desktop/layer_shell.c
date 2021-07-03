@@ -301,7 +301,11 @@ arrange_layers(struct kiwmi_output *output)
         }
     }
 
-    output->usable_area = usable_area;
+    if (memcmp(&usable_area, &output->usable_area,
+                sizeof(struct wlr_box)) != 0) {
+        memcpy(&output->usable_area, &usable_area, sizeof(struct wlr_box));
+        wl_signal_emit(&output->events.usable_area_change, output);
+    }
 
     struct kiwmi_desktop *desktop = output->desktop;
     struct kiwmi_server *server   = wl_container_of(desktop, server, desktop);

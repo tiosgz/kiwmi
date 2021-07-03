@@ -26,6 +26,7 @@ struct kiwmi_output {
     struct {
         struct wl_signal destroy;
         struct wl_signal resize;
+        struct wl_signal usable_area_change;
     } events;
 };
 

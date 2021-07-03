@@ -222,6 +222,11 @@ Callback receives the output.
 The output is being resized.
 Callback receives a table containing the `output`, the new `width`, and the new `height`.
 
+#### usable_area_change
+
+The usable area of this output has changed, e.g. because the output was resized or the bars around it changed.
+Callback reveives a table containing the `output` and the new `x`, `y`, `width` and `height`.
+
 ## kiwmi_renderer
 
 Represents a rendering context, to draw on the output.
